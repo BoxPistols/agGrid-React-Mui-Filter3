@@ -1,0 +1,48 @@
+body {
+  padding: 2vw 4vw;
+}
+
+/* App.css */
+.app {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.split {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  overflow: auto;
+  transition: 0.2s;
+}
+
+.pane1 {
+  background-color: lightcoral;
+}
+
+.pane2 {
+  background-color: lightskyblue;
+}
+
+/* 動き */
+.pane:hover {
+  opacity: 0.85;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.split > .gutter {
+  transition: 0.2s;
+}
+
+.split > .gutter:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: ew-resize;
+}
