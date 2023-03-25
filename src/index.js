@@ -1,12 +1,14 @@
 // import React from "react";
 import ReactDOM from "react-dom";
-import Table from "../src/table/Table";
-import "./app.css";
+// import Table from "../src/table/Table";
+import Card from "./components/Card";
+// import "./app.css";
 
 function App() {
   return (
     <div className="App">
-      <Table />
+      <Card />
+      {/* <Table /> */}
     </div>
   );
 }
