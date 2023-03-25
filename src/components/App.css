@@ -19,8 +19,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: 80vh;
   overflow: auto;
+  transition: 0.2s;
 }
 
 .pane1 {
@@ -29,4 +30,19 @@ body {
 
 .pane2 {
   background-color: lightskyblue;
+}
+
+/* 動き */
+.pane:hover {
+  opacity: 0.85;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+.split > .gutter {
+  transition: 0.2s;
+}
+
+.split > .gutter:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: ew-resize;
 }
