@@ -1,6 +1,7 @@
 // import React from "react";
 import ReactDOM from "react-dom";
 import Table from "../src/table/Table";
+import "./app.css";
 
 function App() {
   return (
