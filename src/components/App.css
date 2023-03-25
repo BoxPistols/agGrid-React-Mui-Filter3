@@ -1,5 +1,5 @@
 body {
-  padding: 2vw 4vw;
+  margin: 0;
 }
 
 /* App.css */
@@ -7,6 +7,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  /* padding: 2vw 4vw; */
 }
 
 .split {
@@ -17,11 +18,11 @@ body {
 
 .pane {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
+  /* align-items: center;
+  justify-content: center; */
+  min-height: 100vh;
   overflow: auto;
-  transition: 0.2s;
+  transition: 0.1s;
 }
 
 .pane1 {
