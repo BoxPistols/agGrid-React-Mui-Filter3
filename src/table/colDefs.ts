@@ -18,9 +18,4 @@ export default [
     sortable: true,
     minWidth: 120,
   },
-  {
-    headerName: "Completion Status",
-    field: "completed",
-    sortable: true,
-  },
 ];
