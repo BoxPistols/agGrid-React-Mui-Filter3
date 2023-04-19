@@ -1,18 +1,34 @@
 import React from "react";
-import { Tooltip } from "@mui/material";
+import { Tooltip, Box } from "@mui/material";
 
 const CellWithTooltip = (props: any) => {
   const { value } = props;
+
   return (
     <Tooltip
       title={value}
-      arrow
-      sx={{
-        p: 2, // パディング
-        backgroundColor: "green.500", // 背景色
-        color: "white", // テキスト色
-        fontSize: "1.2rem", // フォントサイズ
+      //   arrow
+      disableInteractive
+      PopperProps={{
+        sx: {
+          //   minWidth: 100,
+          //   minHeight: 40,
+          fontSize: 12,
+          padding: "8px 16px",
+          border: "1px solid #999",
+          backgroundColor: "#212121",
+          color: "white",
+          //   marginRight: "32px !important",
+          transition: 0,
+          //  "& .MuiTooltip-arrow": {
+          // top: "-10px !important",
+          //    "&::before": {
+          //      backgroundColor: "gray",
+          //    },
+          //  },
+        },
       }}
+      components={{ Tooltip: Box }}
     >
       <div>{value}</div>
     </Tooltip>

@@ -22,29 +22,11 @@ import CellWithTooltip from "./CellWithTooltip";
 const Table = () => {
   // グリッドAPIへの参照
   const gridRef = useRef<AgGridReact>(null);
-
   // 表示する行データ
   const [rowData, setRowData] = useState<any[]>([]);
-
   // 選択された行データ
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
 
-  // // 各カラムの定義
-  // const [columnDefs] = useState([
-  //   // { field: "id", hide: true }, // ID（非表示）
-  //   {
-  //     headerName: "",
-  //     field: "checkbox",
-  //     width: 50,
-  //     headerCheckboxSelection: true,
-  //     headerCheckboxSelectionFilteredOnly: true,
-  //     checkboxSelection: true,
-  //   }, // チェックボックス
-  //   { field: "id" }, // ID（非表示）
-  //   { field: "make", filter: true }, // メーカー
-  //   { field: "model", filter: true }, // 車種
-  //   { field: "price" }, // 価格
-  // ]);
 
   // カラムの共通プロパティを設定するオブジェクト
   const defaultColDef = useMemo(
@@ -102,9 +84,7 @@ const Table = () => {
   return (
     <div>
       <main className="main">
-        <Typography variant="h4" color="initial">
-          Check Table
-        </Typography>
+        <Typography color="initial">Check Table</Typography>
         {/* 選択された行を表示するカード */}
         <Box display="flex" gap={2} justifyContent="center" mb={1}>
           <Box display="flex" flexWrap="wrap" gap={1}>
