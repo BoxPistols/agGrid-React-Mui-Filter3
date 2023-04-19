@@ -13,6 +13,11 @@ import {
   Card,
   CardContent,
   Box,
+  DialogContent,
+  DialogTitle,
+  Dialog,
+  DialogActions,
+  CircularProgress,
 } from "@mui/material";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
@@ -27,6 +32,8 @@ const Table = () => {
   // 選択された行データ
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
 
+  // Dialog
+  const [open, setOpen] = useState<boolean>(false);
 
   // カラムの共通プロパティを設定するオブジェクト
   const defaultColDef = useMemo(
@@ -84,9 +91,112 @@ const Table = () => {
   return (
     <div>
       <main className="main">
-        <Typography color="initial">Check Table</Typography>
-        {/* 選択された行を表示するカード */}
+        <Typography variant="h4" color="initial" mb={1}>
+          CheckButton Table
+        </Typography>
+
+        {/* 上部エリア */}
         <Box display="flex" gap={2} justifyContent="center" mb={1}>
+          {/* Open Dialog */}
+          <Box sx={{ height: 4 }}>
+            <Button variant="contained" onClick={() => setOpen(true)}>
+              選択したレコードの詳細を見る
+            </Button>
+          </Box>
+          {/* Dialog */}
+          <Dialog
+            open={open}
+            onClose={() => setOpen(false)}
+            maxWidth="xl"
+            sx={{ minWidth: "70vw" }}
+          >
+            <DialogTitle>Details</DialogTitle>
+            <DialogContent
+              sx={{
+                background: "rgb(254, 254, 254, 0.8)!important",
+              }}
+            >
+              {selectedRows.map((row, index) => (
+                <Box key={index}>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    m={3}
+                    gap={3}
+                  >
+                    <Box display="flex" flexDirection="column" gap={3}>
+                      <Box>
+                        <Typography variant="body1" color="text.secondary">
+                          ID: {row.id}
+                        </Typography>
+                      </Box>
+                      <Box>
+                        <Typography variant="h6" color="text.secondary">
+                          Make: {row.make}
+                        </Typography>
+                      </Box>
+                    </Box>
+                    <Box display="flex">
+                      <Box
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                        flexDirection="column"
+                        m={3}
+                      >
+                        <Box
+                          display="flex"
+                          flexDirection="column"
+                          justifyContent="center"
+                          alignItems="center"
+                          m={3}
+                        >
+                          <Box>
+                            <CircularProgress
+                              variant="determinate"
+                              value={33}
+                              // sx={{ minWidth: 60, mb: 4 }}
+                            />
+                          </Box>
+                          <Box>
+                            <Typography variant="h5" color="text.secondary">
+                              Model: {row.model}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Box
+                          display="flex"
+                          flexDirection="column"
+                          justifyContent="center"
+                          alignItems="center"
+                          m={3}
+                        >
+                          <Box>
+                            <CircularProgress
+                              variant="determinate"
+                              value={75}
+                              // sx={{ minWidth: 60, mb: 4 }}
+                            />
+                          </Box>
+                          <Box>
+                            <Typography variant="h5" color="text.secondary">
+                              Price: {row.price}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpen(false)}>Close</Button>
+            </DialogActions>
+          </Dialog>
+
+          {/* 選択された行を表示するカード */}
           <Box display="flex" flexWrap="wrap" gap={1}>
             <Card sx={{ minWidth: 275, maxWidth: "100%" }}>
               <CardContent>
