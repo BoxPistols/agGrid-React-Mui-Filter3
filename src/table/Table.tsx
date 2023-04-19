@@ -77,8 +77,8 @@ const Table = () => {
   return (
     <div>
       <main className="main">
-        <Typography variant="h2" color="initial">
-          Basic Table
+        <Typography variant="h4" color="initial">
+          Check Table
         </Typography>
         {/* Ag-Gridテーブル */}
         <div
