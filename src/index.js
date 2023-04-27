@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom";
-import Table from "../src/table/Table";
+import PickUpRecortdTable from "./table/PickUpRecortdTable";
 import "./app.css";
 
 function App() {
-  return <Table />;
+  return <PickUpRecortdTable />;
 }
 
 export default App;

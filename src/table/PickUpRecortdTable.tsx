@@ -24,7 +24,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 
 import CellWithTooltip from "./CellWithTooltip";
 
-const Table = () => {
+const PickUpRecortdTable = () => {
   // グリッドAPIへの参照
   const gridRef = useRef<AgGridReact>(null);
   // 表示する行データ
@@ -96,13 +96,43 @@ const Table = () => {
         </Typography>
 
         {/* 上部エリア */}
-        <Box display="flex" gap={2} justifyContent="center" mb={1}>
+        <Box display="flex" gap={2} alignItems="center" mb={1}>
           {/* Open Dialog */}
-          <Box sx={{ height: 4 }}>
+          <Box sx={{ minHeight: 4 }}>
             <Button variant="contained" onClick={() => setOpen(true)}>
-              選択したレコードの詳細を見る
+              選択したレコードの
+              <br />
+              詳細を見る
             </Button>
           </Box>
+          {/* 選択された行を表示するカード */}
+          <Box display="flex" flexWrap="wrap" gap={1}>
+            <Card sx={{ minWidth: 275, maxWidth: "100%" }}>
+              <CardContent>
+                {selectedRows.map((row, index) => (
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    key={index}
+                  >
+                    ID: {row.id}, Make: {row.make}, Model: {row.model}, Price:{" "}
+                    {row.price}
+                  </Typography>
+                ))}
+              </CardContent>
+            </Card>
+          </Box>
+          {/* 選択解除ボタン */}
+          <Box sx={{ minHeight: 4 }}>
+            <Button
+              variant="outlined"
+              sx={{ mt: 1 }}
+              onClick={handleButtonClicked}
+            >
+              Clear Select
+            </Button>
+          </Box>
+
           {/* Dialog */}
           <Dialog
             open={open}
@@ -195,34 +225,6 @@ const Table = () => {
               <Button onClick={() => setOpen(false)}>Close</Button>
             </DialogActions>
           </Dialog>
-
-          {/* 選択された行を表示するカード */}
-          <Box display="flex" flexWrap="wrap" gap={1}>
-            <Card sx={{ minWidth: 275, maxWidth: "100%" }}>
-              <CardContent>
-                {selectedRows.map((row, index) => (
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    key={index}
-                  >
-                    ID: {row.id}, Make: {row.make}, Model: {row.model}, Price:{" "}
-                    {row.price}
-                  </Typography>
-                ))}
-              </CardContent>
-            </Card>
-          </Box>
-          {/* 選択解除ボタン */}
-          <Box sx={{ height: 4 }}>
-            <Button
-              variant="outlined"
-              sx={{ mt: 1 }}
-              onClick={handleButtonClicked}
-            >
-              Clear Select
-            </Button>
-          </Box>
         </Box>
 
         {/* Ag-Gridテーブル */}
@@ -245,4 +247,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default PickUpRecortdTable;
